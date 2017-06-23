@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <!-- 注入自定义命名 @Required-style的@Mandatory 注解 -->
+    <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor">
+        <property name="requiredAnnotationType" value="me.ranjit.spring.bean.annotation.requiredstyle.Mandatory"/>
+    </bean>
+
+    <bean id="CustomerBean" class="me.ranjit.spring.bean.annotation.requiredstyle.Customer" >
+        <property name="action" value="buy" />
+    </bean>
+
+    <bean id="PersonBean" class="me.ranjit.spring.bean.annotation.requiredstyle.Person">
+        <property name="name" value="ranjit" />
+        <property name="address" value="address ABC" />
+    </bean>
+
+</beans>

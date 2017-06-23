@@ -1,10 +1,13 @@
 package me.ranjit.spring.loosecoupling;
 
+import lombok.extern.log4j.Log4j2;
+
 /**
  * Created by suzh on 5/27/2017.
  */
+@Log4j2
 public class JsonOutputgenerator implements IOutputGenerator {
     public void generateOutput() {
-        System.out.println("json output generator");
+        log.info("json output generator");
     }
 }

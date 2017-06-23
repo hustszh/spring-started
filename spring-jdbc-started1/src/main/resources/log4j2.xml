@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Configuration status="OFF" monitorInterval="300"> <!-- status: 表示log4j2本身的日志信息打印级别，monitorInterval属性，含义是每隔300秒重新读取配置文件，可以不重启应用的情况下修改配置 -->
+
+    <!-- Appenders配置：日志的输出目的地 -->
+    <Appenders>
+        <!-- 类型为Console的Appender：输出到控制台 -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" /><!-- 输出日志时的格式 -->
+        </Console>
+    </Appenders>
+
+    <!-- Logger的配置：在代码中可以根据需要选用不同的Logger：LogManager.getLogger(name) -->
+    <Loggers>
+        <!-- Root Logger -->
+        <Root level="info">
+            <AppenderRef ref="Console" />
+        </Root>
+    </Loggers>
+
+</Configuration>

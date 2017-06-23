@@ -1,8 +1,11 @@
 package me.ranjit.spring.context;
 
+import lombok.extern.log4j.Log4j2;
+
 /**
  * Created by suzh on 5/27/2017.
  */
+@Log4j2
 public class HelloWorld {
     private String name;
 
@@ -11,6 +14,6 @@ public class HelloWorld {
     }
 
     public void printHello() {
-        System.out.println("Spring 3 : Hello ! " + name);
+        log.info("Spring 3 : Hello ! " + name);
     }
 }
