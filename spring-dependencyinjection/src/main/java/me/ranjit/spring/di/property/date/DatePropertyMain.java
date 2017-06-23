@@ -1,5 +1,6 @@
 package me.ranjit.spring.di.property.date;
 
+import lombok.extern.log4j.Log4j2;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -13,10 +14,11 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * 2. CustomDateEditor
  * 在spring配置文件中配置CustomDateEditor和CustomEditorConfigurer
  */
+@Log4j2
 public class DatePropertyMain {
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("property/date/applicationContextDateProperty.xml");
         Customer customer = (Customer)context.getBean("customer");
-        System.out.println(customer.getDate());
+        log.info(customer.getDate());
     }
 }
