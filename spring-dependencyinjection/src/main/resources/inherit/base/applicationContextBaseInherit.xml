@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="baseCustomer" class="me.ranjit.spring.di.inherit.Customer" >
+        <property name="country" value="China" />
+    </bean>
+
+    <!--  只从它的父(“baseCustomer”)继承 country 属性。子bean的类与父bean保持一致。-->
+    <bean id="childCustomer" parent="baseCustomer" >
+        <property name="action" value="look" />
+        <property name="type" value="2" />
+    </bean>
+</beans>

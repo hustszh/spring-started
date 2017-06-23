@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <!-- 纯粹的模板，只分享其"country"属性。 -->
+    <bean id="baseCustomer" abstract="true" >
+        <property name="country" value="China" />
+    </bean>
+
+    <!-- 如果父bean没有定义class属性，子bean必须定义class属性 -->
+    <bean id="childCustomer" parent="baseCustomer" class="me.ranjit.spring.di.inherit.Customer" >
+        <property name="action" value="look" />
+        <property name="type" value="2" />
+    </bean>
+</beans>

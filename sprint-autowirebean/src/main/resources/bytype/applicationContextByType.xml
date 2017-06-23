@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+    <!-- Customer的Address属性会通过setter()方法自动装配到Address -->
+    <bean id="customer" class="me.ranjit.spring.autowirebean.bean.Customer" autowire="byType">
+        <property name="name" value="ranjit" />
+    </bean>
+
+    <!-- 在"类型自动装配"模式，就必须确保只有Bean 只有一个唯一的数据类型声明。-->
+    <bean id="address" class="me.ranjit.spring.autowirebean.bean.Address" >
+        <property name="state" value="CA" />
+        <property name="fulladdress" value="NO.1234, Cat Street" />
+    </bean>
+
+    <!--<property.base id="address2" class="me.ranjit.spring.autowirebean.property.base.Address" >-->
+        <!--<property name="state" value="CA" />-->
+        <!--<property name="fulladdress" value="NO.1234, Cat Street" />-->
+    <!--</property.base>-->
+
+</beans>

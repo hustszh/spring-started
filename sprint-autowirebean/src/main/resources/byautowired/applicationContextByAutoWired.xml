@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+    <!-- 要启用@Autowired，必须注册“AutowiredAnnotationBeanPostProcessor'，你可以用两种方式做到这一点 -->
+    <!-- 方式一：添加"Spring上下文"和<context:annotation-config />在bean配置文件中 -->
+    <context:annotation-config />
+
+    <!-- 方式二：直接在bean配置文件包含“AutowiredAnnotationBeanPostProcessor”-->
+    <!--<property.base class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>-->
+
+    <bean id="customer" class="me.ranjit.spring.autowirebean.bean.Customer">
+        <property name="name" value="ranjit" />
+    </bean>
+
+    <bean id="address" class="me.ranjit.spring.autowirebean.bean.Address" >
+        <property name="state" value="CA" />
+        <property name="fulladdress" value="NO.1234, Cat Street" />
+    </bean>
+
+    <bean id="address2" class="me.ranjit.spring.autowirebean.bean.Address" >
+        <property name="state" value="NY" />
+        <property name="fulladdress" value="No.345, Dog Street" />
+    </bean>
+
+</beans>

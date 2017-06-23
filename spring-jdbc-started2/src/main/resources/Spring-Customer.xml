@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <bean id="jdbcCustomerDAO" class="me.ranjit.spring.jdbc.dao.impl.JdbcCustomerDAOImpl">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+    <bean id="jdbcTemplateCustomerDAO" class="me.ranjit.spring.jdbc.dao.impl.JdbcTemplateCustomerDAOImpl">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+    <bean id="jdbcDaoSupportCustomerDAO" class="me.ranjit.spring.jdbc.dao.impl.JdbcDaoSupportCustomerDAOImpl">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+    <bean id="customerQueryDAO" class="me.ranjit.spring.jdbc.query.dao.impl.CustomerQueryDAOImpl">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+    <bean id="customerUpdateDAO" class="me.ranjit.spring.jdbc.update.dao.impl.CustomerUpdateDAOImpl">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+</beans>

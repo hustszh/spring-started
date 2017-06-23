@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/util
+	http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+    <bean id="customer" class="me.ranjit.spring.di.property.collection.setfactorybean.Customer" >
+        <property name="sets">
+            <!-- 方式一： SetFactoryBean模式-->
+            <!--<bean class="org.springframework.beans.factory.config.SetFactoryBean">-->
+                <!--<property name="targetSetClass">-->
+                    <!--<value>java.util.HashSet</value>-->
+                <!--</property>-->
+                <!--<property name="sourceSet">-->
+                    <!--<list>-->
+                        <!--<value>one</value>-->
+                        <!--<value>2</value>-->
+                        <!--<value>three</value>-->
+                    <!--</list>-->
+                <!--</property>-->
+            <!--</bean>-->
+            <!-- 方式二：util 模式 -->
+            <util:set set-class="java.util.HashSet">
+                <value>one</value>
+                <value>2</value>
+                <value>three</value>
+            </util:set>
+        </property>
+    </bean>
+
+</beans>
