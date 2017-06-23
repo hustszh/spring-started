@@ -2,7 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
        default-dependency-check="all"><!-- 设置全局默认的依赖检查 -->
 
     <bean id="CustomerBean" class="me.ranjit.spring.bean.xml.Customer" >

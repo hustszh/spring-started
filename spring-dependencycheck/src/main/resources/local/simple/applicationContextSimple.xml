@@ -2,7 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
     <!-- 在“type”属性(基本类型或集合类型)，如尚未设置，UnsatisfiedDependencyException将抛出。-->
     <bean id="CustomerBean" class="me.ranjit.spring.bean.xml.Customer" dependency-check="simple">
