@@ -18,6 +18,8 @@
         <module>spring-dependencyinjection</module>
         <module>spring-beanscope</module>
         <module>spring-dependencycheck</module>
+        <module>spring-bean-initialize-dispose</module>
+        <module>spring-expressionlanguage</module>
     </modules>
 
     <dependencies>
