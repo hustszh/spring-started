@@ -20,6 +20,7 @@
         <module>spring-dependencycheck</module>
         <module>spring-bean-initialize-dispose</module>
         <module>spring-expressionlanguage</module>
+        <module>spring-component-scan</module>
     </modules>
 
     <dependencies>
