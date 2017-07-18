@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+    <!-- 启用AspectJ -->
+    <aop:aspectj-autoproxy/>
+
+    <bean id="customerService" class="me.ranjit.spring.aspectj.service.impl.CustomerServiceImpl"/>
+
+    <bean id="loggingAspect" class="me.ranjit.spring.aspectj.xml.XmlAspect"/>
+
+    <aop:config>
+        <aop:aspect id="aspectLogging" ref="loggingAspect">
+            <!-- @Before -->
+            <aop:pointcut id="pointCutBefore"
+                          expression="execution(* me.ranjit.spring.aspectj.service.ICustomerService.addCustomer(..))" />
+            <aop:before method="logBefore" pointcut-ref="pointCutBefore" />
+
+            <!-- @After -->
+            <aop:pointcut id="pointCutAfter"
+                          expression="execution(* me.ranjit.spring.aspectj.service.ICustomerService.addCustomer(..))" />
+            <aop:after method="logAfter" pointcut-ref="pointCutAfter" />
+
+            <!-- @AfterReturning -->
+            <aop:pointcut id="pointCutAfterReturning"
+                          expression="execution(* me.ranjit.spring.aspectj.service.ICustomerService.addCustomerReturnValue(..))" />
+            <aop:after-returning method="logAfterReturning"
+                                 returning="result" pointcut-ref="pointCutAfterReturning" />
+
+            <!-- @AfterThrowing -->
+            <aop:pointcut id="pointCutAfterThrowing"
+                          expression="execution(* me.ranjit.spring.aspectj.service.ICustomerService.addCustomerThrowException(..))" />
+            <aop:after-throwing method="logAfterThrowing"
+                                throwing="error" pointcut-ref="pointCutAfterThrowing" />
+
+            <!-- @Around -->
+            <aop:pointcut id="pointCutAround"
+                          expression="execution(* me.ranjit.spring.aspectj.service.ICustomerService.addCustomerAround(..))" />
+            <aop:around method="logAround" pointcut-ref="pointCutAround" />
+        </aop:aspect>
+    </aop:config>
+
+</beans>

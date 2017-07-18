@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="customerService" class="me.ranjit.spring.aop.CustomerService">
+        <property name="name" value="ranjit" />
+        <property name="url" value="me.ranjit.www"/>
+    </bean>
+
+    <!-- 创建AOP advice bean -->
+    <bean id="hijackAroundMethodBeanAdvice" class="me.ranjit.spring.aop.withaop.interceptneeded.HijackAroundMethod"/>
+
+    <!-- 创建AOP pointcut bean：只拦截printName()方法 -->
+    <bean id="customerPointcut" class="org.springframework.aop.support.NameMatchMethodPointcut">
+        <property name="mappedName" value="printName"/>
+    </bean>
+
+    <!-- 创建AOP advisor bean（方式一：DefaultPointcutAdvisor）：包含pointcut，advice -->
+    <bean id="customerAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+        <property name="pointcut" ref="customerPointcut"/>
+        <property name="advice" ref="hijackAroundMethodBeanAdvice"/>
+    </bean>
+
+    <!-- 创建AOP advisor bean（方式二：NameMatchMethodPointcutAdvisor）：包含mappedName，advice -->
+    <bean id="customerAdvisor2" class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor">
+        <property name="mappedName" value="printName"/>
+        <property name="advice" ref="hijackAroundMethodBeanAdvice"/>
+    </bean>
+
+    <!-- 创建AOP advisor bean（方式三：NameMatchMethodPointcutAdvisor）：包含mappedName，advice -->
+    <bean id="customerAdvisor3" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+        <property name="patterns">
+            <list>
+                <value>.*URL.*</value><!-- 拦截方法名称中有“URL”的方法 -->
+            </list>
+        </property>
+        <property name="advice" ref="hijackAroundMethodBeanAdvice"/>
+    </bean>
+
+    <!-- 创建一个新的代理对象
+    ‘target’ – 定义你想拦截的bean。
+    ‘interceptorNames’ – 定义要应用这个代理/目标对象的类(通知)。
+    -->
+    <bean id="customerServiceProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target" ref="customerService"/>
+        <property name="interceptorNames">
+            <list>
+                <value>customerAdvisor3</value>
+            </list>
+        </property>
+    </bean>
+</beans>

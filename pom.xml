@@ -21,18 +21,24 @@
         <module>spring-bean-initialize-dispose</module>
         <module>spring-expressionlanguage</module>
         <module>spring-component-scan</module>
+        <module>spring-aop</module>
+        <module>spring-aspectj</module>
     </modules>
+
+    <properties>
+        <spring.version>3.2.16.RELEASE</spring.version>
+    </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>3.2.16.RELEASE</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
-            <version>3.2.16.RELEASE</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
