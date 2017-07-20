@@ -1,0 +1,16 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <!-- Stock business object -->
+    <bean id="stockBo" class="me.ranjit.spring.hibernate.xml.bo.impl.StockBoImpl" >
+        <property name="stockDao" ref="stockDao" />
+    </bean>
+
+    <!-- Stock Data Access Object -->
+    <bean id="stockDao" class="me.ranjit.spring.hibernate.xml.dao.impl.StockDaoImpl" >
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+</beans>
