@@ -23,6 +23,7 @@
         <module>spring-component-scan</module>
         <module>spring-aop</module>
         <module>spring-aspectj</module>
+        <module>spring-transaction</module>
     </modules>
 
     <properties>

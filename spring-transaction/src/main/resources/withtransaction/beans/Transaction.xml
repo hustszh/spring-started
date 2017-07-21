@@ -1,0 +1,32 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <!-- 声明“TransactionInterceptor' bean，以及”HibernateTransactionManager' Hibernate事务 -->
+    <!-- 在事务拦截器，必须定义的事务的属性“传播行为”，由Spring支持传播的 7种类型：
+        PROPAGATION_REQUIRED – 支持当前事务;如果不存在则创建一个新的。
+        PROPAGATION_SUPPORTS – 支持当前事务;如果不存在执行非事务。
+        PROPAGATION_MANDATORY – 支持当前事务;如果当前不存在事务抛出异常。
+        PROPAGATION_REQUIRES_NEW – 创建一个新的事务，如果当前事务暂停。
+        PROPAGATION_NOT_SUPPORTED – 不支持当前的事务;而始终执行非事务。
+        PROPAGATION_NEVER – 不支持当前的事务;如果当前事务存在则抛出异常。
+        PROPAGATION_NESTED – 如果当前存在事务嵌套事务中执行，表现与 PROPAGATION_REQUIRED 一样。-->
+    <bean id="transactionInterceptor"
+          class="org.springframework.transaction.interceptor.TransactionInterceptor">
+        <property name="transactionManager" ref="transactionManager" />
+        <property name="transactionAttributes">
+            <props>
+                <!-- save*会匹配所有的方法名 以save(...)开始的方法 -->
+                <prop key="save">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="transactionManager"
+          class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+</beans>

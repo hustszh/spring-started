@@ -1,0 +1,27 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <!-- Product business object -->
+    <bean id="productBo1" class="me.ranjit.spring.withtransaction.bo.impl.ProductBoImpl" >
+        <property name="productDao" ref="productDao1" />
+        <property name="productQohBo" ref="productQohBo1" />
+    </bean>
+
+    <!-- Product Data Access Object -->
+    <bean id="productDao1" class="me.ranjit.spring.withtransaction.dao.impl.ProductDaoImpl" >
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+
+    <!-- 代理 bean'productBoProxy'和 save()方法是支持事务，
+    现在，当productBo.save()方法任何异常会导致整个事务回滚，没有数据会被插入到数据库中。-->
+    <bean id="productBoProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target" ref="productBo1" />
+        <property name="interceptorNames">
+            <list>
+                <value>transactionInterceptor</value>
+            </list>
+        </property>
+    </bean>
+</beans>

@@ -1,0 +1,15 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <!-- ProductQoh business object -->
+    <bean id="productQohBo1" class="me.ranjit.spring.withtransaction.bo.impl.ProductQohBoImpl" >
+        <property name="productQohDao" ref="productQohDao1" />
+    </bean>
+
+    <!-- ProductQoh Data Access Object -->
+    <bean id="productQohDao1" class="me.ranjit.spring.withtransaction.dao.impl.ProductQohDaoImpl" >
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+</beans>
